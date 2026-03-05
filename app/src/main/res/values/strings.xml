@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">androidmvvm</string>
+    <string name="mvvm_placeholder">Loading greeting...</string>
+    <string name="mvvm_refresh">Refresh Greeting</string>
 </resources>
