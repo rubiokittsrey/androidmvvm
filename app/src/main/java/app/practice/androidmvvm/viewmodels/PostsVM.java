@@ -20,6 +20,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PostsVM extends AndroidViewModel {
 
     private static final int DEFAULT_POST_ID = 1;
+    private static final String KEY_ID = "id";
+    private static final String KEY_USER_ID = "userId";
+    private static final String KEY_TITLE = "title";
+    private static final String KEY_BODY = "body";
     public static final int MIN_POST_ID = 1;
     public static final int MAX_POST_ID = 100;
     public static final int MIN_USER_ID = 1;
@@ -73,9 +77,9 @@ public class PostsVM extends AndroidViewModel {
 
     public void createPost(int userId, String title, String body) {
         Map<String, Object> post = new HashMap<>();
-        post.put("userId", userId);
-        post.put("title", title);
-        post.put("body", body);
+        post.put(KEY_USER_ID, userId);
+        post.put(KEY_TITLE, title);
+        post.put(KEY_BODY, body);
 
         postsRepo.createPost(post, createdPost -> {
             if (createdPost != null) {
@@ -86,10 +90,10 @@ public class PostsVM extends AndroidViewModel {
 
     public void updatePost(int userId, int postId, String title, String body) {
         Map<String, Object> post = new HashMap<>();
-        post.put("userId", userId);
-        post.put("id", postId);
-        post.put("title", title);
-        post.put("body", body);
+        post.put(KEY_USER_ID, userId);
+        post.put(KEY_ID, postId);
+        post.put(KEY_TITLE, title);
+        post.put(KEY_BODY, body);
 
         postsRepo.updatePost(postId, post, updatedPost -> {
             if (updatedPost != null) {
@@ -98,8 +102,8 @@ public class PostsVM extends AndroidViewModel {
         });
     }
 
-    public void deletePost(int id) {
-        postsRepo.deletePost(id, success -> {
+    public void deletePost(int postId) {
+        postsRepo.deletePost(postId, success -> {
             if (success) {
                 selectedPostId.setValue(DEFAULT_POST_ID);
                 postsRepo.refreshPost(DEFAULT_POST_ID);

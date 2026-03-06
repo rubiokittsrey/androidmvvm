@@ -12,15 +12,15 @@ import retrofit2.http.Path;
 
 public interface EndPoints {
 
-    @GET(APIs.PostById)
+    @GET(APIs.POST_BY_ID)
     Call<Map<String, Object>> getPost(@Path("id") int id);
 
-    @POST(APIs.CreatePost)
+    @POST(APIs.CREATE_POST)
     Call<Map<String, Object>> createPost(@Body Map<String, Object> body);
 
-    @PUT(APIs.UpdatePost)
+    @PUT(APIs.UPDATE_POST)
     Call<Map<String, Object>> updatePost(@Path("id") int id, @Body Map<String, Object> body);
 
-    @DELETE(APIs.DeletePost)
+    @DELETE(APIs.DELETE_POST)
     Call<Void> deletePost(@Path("id") int id);
 }

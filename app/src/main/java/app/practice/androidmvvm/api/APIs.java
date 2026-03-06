@@ -1,12 +1,13 @@
 package app.practice.androidmvvm.api;
 
-public class APIs {
+public final class APIs {
 
-    public static final String PostById = "posts/{id}";
+    public static final String POST_BY_ID = "posts/{id}";
+    public static final String CREATE_POST = "posts";
+    public static final String UPDATE_POST = "posts/{id}";
+    public static final String DELETE_POST = "posts/{id}";
 
-    public static final String CreatePost = "posts";
-
-    public static final String UpdatePost = "posts/{id}";
-
-    public static final String DeletePost = "posts/{id}";
+    private APIs() {
+        // Utility class
+    }
 }

@@ -17,6 +17,13 @@ import retrofit2.Response;
 
 public class PostsRepo {
 
+    private static final String KEY_ID = "id";
+    private static final String KEY_USER_ID = "userId";
+    private static final String KEY_TITLE = "title";
+    private static final String KEY_BODY = "body";
+    private static final String DEFAULT_LOADING_TITLE = "Loading post title...";
+    private static final String DEFAULT_LOADING_BODY = "Loading post body...";
+
     public interface CreatePostCallback {
         void onComplete(PostEntity postEntity);
     }
@@ -42,14 +49,14 @@ public class PostsRepo {
     public LiveData<String> observePostTitle(int postId) {
         return Transformations.map(
                 postDao.observePost(postId),
-                entity -> entity == null ? "Loading post title..." : entity.getTitle()
+                entity -> entity == null ? DEFAULT_LOADING_TITLE : entity.getTitle()
         );
     }
 
     public LiveData<String> observePostBody(int postId) {
         return Transformations.map(
                 postDao.observePost(postId),
-                entity -> entity == null ? "Loading post body..." : entity.getBody()
+                entity -> entity == null ? DEFAULT_LOADING_BODY : entity.getBody()
         );
     }
 
@@ -60,10 +67,10 @@ public class PostsRepo {
         }
 
         Map<String, Object> body = response.body();
-        Object id = body.get("id");
-        Object userId = body.get("userId");
-        Object title = body.get("title");
-        Object postBody = body.get("body");
+        Object id = body.get(KEY_ID);
+        Object userId = body.get(KEY_USER_ID);
+        Object title = body.get(KEY_TITLE);
+        Object postBody = body.get(KEY_BODY);
 
         if (!(id instanceof Number) || !(userId instanceof Number)) {
             return null;
@@ -108,7 +115,7 @@ public class PostsRepo {
         });
     }
 
-    public void updatePost(Integer id, Map<String, Object> post, UpdatePostCallback callback) {
+    public void updatePost(int id, Map<String, Object> post, UpdatePostCallback callback) {
         executor.execute(() -> {
             PostEntity postEntity = null;
             try {
@@ -129,7 +136,7 @@ public class PostsRepo {
         });
     }
 
-    public void deletePost(Integer id, DeletePostCallback callback) {
+    public void deletePost(int id, DeletePostCallback callback) {
         executor.execute(() -> {
             boolean success = false;
             try {
