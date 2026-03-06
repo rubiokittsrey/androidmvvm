@@ -6,15 +6,15 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import app.practice.androidmvvm.database.dao.GreetingDao;
-import app.practice.androidmvvm.database.entities.GreetingEntity;
+import app.practice.androidmvvm.database.dao.PostDao;
+import app.practice.androidmvvm.database.entities.PostEntity;
 
-@Database(entities = {GreetingEntity.class}, version = 1, exportSchema = false)
+@Database(entities = {PostEntity.class}, version = 3, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE;
 
-    public abstract GreetingDao greetingDao();
+    public abstract PostDao postDao();
 
     public static AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {

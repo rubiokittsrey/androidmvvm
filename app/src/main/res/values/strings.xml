@@ -1,5 +1,26 @@
 <resources>
     <string name="app_name">androidmvvm</string>
-    <string name="mvvm_placeholder">Loading greeting...</string>
-    <string name="mvvm_refresh">Refresh Greeting</string>
+    <string name="posts_title_placeholder">Loading post title...</string>
+    <string name="posts_body_placeholder">Loading post body...</string>
+    <string name="posts_refresh">Refresh Post</string>
+    <string name="posts_load">Load</string>
+    <string name="posts_create">Create Post</string>
+    <string name="posts_update">Update Post</string>
+    <string name="posts_delete">Delete Post</string>
+    <string name="posts_id_hint">Post ID (1-100)</string>
+    <string name="posts_id_required">Post ID is required.</string>
+    <string name="posts_id_invalid">Post ID must be a number.</string>
+    <string name="posts_id_range">Post ID must be between %1$d and %2$d.</string>
+    <string name="posts_loading">Loading post %1$d...</string>
+    <string name="posts_creating">Creating post...</string>
+    <string name="posts_updating">Updating post %1$d...</string>
+    <string name="posts_deleting">Deleting post %1$d...</string>
+    <string name="posts_create_user_id_hint">User ID</string>
+    <string name="posts_create_title_hint">New post title</string>
+    <string name="posts_create_body_hint">New post body</string>
+    <string name="posts_create_user_id_required">User ID is required.</string>
+    <string name="posts_create_user_id_invalid">User ID must be a number.</string>
+    <string name="posts_create_user_id_min">User ID must be at least %1$d.</string>
+    <string name="posts_create_title_required">Title is required.</string>
+    <string name="posts_create_body_required">Body is required.</string>
 </resources>
