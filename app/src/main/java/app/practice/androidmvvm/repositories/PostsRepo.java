@@ -54,6 +54,7 @@ public class PostsRepo {
     }
 
     private PostEntity destructureResponse(Response<Map<String, Object>> response) {
+        // TODO: handle body == error message
         if (!response.isSuccessful() || response.body() == null) {
             return null;
         }
